@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:GrayDog.CustomRenderers"
+             xmlns:container="clr-namespace:GrayDog.CustomContainer"
+             x:Class="GrayDog.Views.ItemsPage"
+              Title="{Binding Title}"
+             x:Name="BrowseItemsPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="AddItem_Clicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="UWP" Value="add.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <RelativeLayout HeightRequest="320">
+                    <BoxView x:Name="box1" Color="Blue" WidthRequest="40" HeightRequest="40" CornerRadius="20" VerticalOptions="Center" HorizontalOptions="Center"
+                         RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=.5,Constant=-20}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=.5,Constant=-20}"/>
+                    <BoxView x:Name="box2" Color="Blue" WidthRequest="40" HeightRequest="40" CornerRadius="20" VerticalOptions="Center" HorizontalOptions="Center"
+                         RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=.5,Constant=-20}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=.5,Constant=-20}"/>
+                    <BoxView x:Name="box3" Color="Blue" WidthRequest="40" HeightRequest="40" CornerRadius="20" VerticalOptions="Center" HorizontalOptions="Center"
+                         RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=.5,Constant=-20}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=.5,Constant=-20}"/>
+                    <BoxView x:Name="box4" Color="Blue" WidthRequest="40" HeightRequest="40" CornerRadius="20" VerticalOptions="Center" HorizontalOptions="Center"
+                         RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=.5,Constant=-20}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=.5,Constant=-20}"/>
+                    <BoxView x:Name="box5" Color="Blue" WidthRequest="40" HeightRequest="40" CornerRadius="20" VerticalOptions="Center" HorizontalOptions="Center"
+                         RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=.5,Constant=-20}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=.5,Constant=-20}"/>
+                </RelativeLayout>
+                <local:MyEntry Margin="10" Placeholder="I am a MyEntry" TextColor="Gray" />
+                <Entry TextChanged="Entry_TextChanged"></Entry>
+                <Image Source="Strack.gif" HeightRequest="50" WidthRequest="50" />
+                <WebView Source="{Binding html}" HeightRequest="500"/>
+                <local:HybridWebView Uri="index.html" HeightRequest="300" HorizontalOptions="FillAndExpand" />
+                <Button Text="StartTime" Command="{Binding StartTimeComm}" />
+                <Button Text="EndTime" Command="{Binding EndTimeComm}"/>
+                <Button Text="hello">
+                    <Button.Image >
+                        <!--<FileImageSource></FileImageSource>-->
+                        <OnPlatform x:TypeArguments="FileImageSource">
+                            <On Platform="Android" Value="Account.png" />
+                            <On Platform="iOS" Value="Account.png" />
+                        </OnPlatform>
+                    </Button.Image>
+                </Button>
+                <Button Text="GoToSwipePage" Clicked="Button_Clicked"/>
+                <StackLayout HeightRequest="200">
+                    <container:PanContainer>
+                        <Image Source="pulse_circl.png" WidthRequest="50" HeightRequest="50"/>
+                    </container:PanContainer>
+                </StackLayout>
+                <StackLayout HeightRequest="200" BackgroundColor="Red">
+                    <container:SwipeContainer BackgroundColor="Gray">
+                        <StackLayout Orientation="Vertical" WidthRequest="100">
+                            <Image Source="cramer_40lm35.png" WidthRequest="100" HeightRequest="100"/>
+                            <Image Source="cramer_item.png" WidthRequest="100" HeightRequest="100"/>
+                        </StackLayout>
+                    </container:SwipeContainer>
+                </StackLayout>
+                <!--<Image Source="cramer_item.png" WidthRequest="100" HeightRequest="100">
+                    <Image.GestureRecognizers>
+                        <SwipeGestureRecognizer Direction="Right" Swiped="{Binding SwipeCommand}" Command="{Binding SwipeCommand}" CommandParameter="Right"/>
+                    </Image.GestureRecognizers>
+                </Image>-->
+                <ListView x:Name="ItemsListView" 
+                ItemsSource="{Binding Items}"
+                VerticalOptions="FillAndExpand"
+                 HasUnevenRows="true"
+                 RefreshCommand="{Binding LoadItemsCommand}"
+                 IsPullToRefreshEnabled="true"
+                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                 CachingStrategy="RecycleElement"
+                 ItemSelected="OnItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10">
+                                    <Label Text="{Binding Text}" 
+                       LineBreakMode="NoWrap" 
+                       Style="{DynamicResource ListItemTextStyle}" 
+                       FontSize="16" />
+                                    <Label Text="{Binding Description}" 
+                       LineBreakMode="NoWrap"
+                       Style="{DynamicResource ListItemDetailTextStyle}"
+                       FontSize="13" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

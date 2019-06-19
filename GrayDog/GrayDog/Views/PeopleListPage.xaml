@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GrayDog.Views.PeopleListPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView IsPullToRefreshEnabled="True" RefreshControlColor="Red"
+                      ItemsSource="{Binding users}"
+                      >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame>
+                            <StackLayout>
+                                <Image Source="{Binding Image}"/>
+                                <Label Text="{Binding Name}"/>
+                                <Label Text="{Binding Age}"/>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:container="clr-namespace:GrayDog.CustomContainer"
+             x:Class="GrayDog.Views.SwipePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <BoxView x:Name="myBox" Color="Teal" WidthRequest="50" HeightRequest="200">
+                <BoxView.GestureRecognizers>
+                    <SwipeGestureRecognizer Direction="Right" Swiped="OnSwiped"/>
+                    <SwipeGestureRecognizer Direction="Left" Swiped="OnSwiped"/>
+                </BoxView.GestureRecognizers>
+            </BoxView>
+            <StackLayout>
+                <container:SwipeContainer x:Name="swipeImg" Swipe="OnSwiped">
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="cramer_item.png" WidthRequest="100" HeightRequest="100">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Source="gw_item.png" WidthRequest="100" HeightRequest="100">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Source="mowerbig.png" WidthRequest="100" HeightRequest="100">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
+                </container:SwipeContainer>
+            </StackLayout>
+            <Button Text="GoToNavegationPage" Clicked="Button_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

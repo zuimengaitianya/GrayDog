@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GrayDog.Views.ScrollImagePage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="gw_item.png" WidthRequest="100"/>
+                        <Image Source="mowerbig.png" WidthRequest="100"/>
+                        <Image Source="cramer_item.png" WidthRequest="100"/>
+                        <Image Source="batteries_choice.png" WidthRequest="100"/>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
