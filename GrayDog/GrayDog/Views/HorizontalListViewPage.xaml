@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GrayDog.Views.HorizontalListViewPage"
+             xmlns:hlistview="clr-namespace:Sharpnado.Presentation.Forms.RenderedViews;assembly=Sharpnado.Presentation.Forms"
+             xmlns:heffects="clr-namespace:Sharpnado.Presentation.Forms.Effects;assembly=Sharpnado.Presentation.Forms"
+             xmlns:hview="clr-namespace:Sharpnado.Infrastructure.Services;assembly=Sharpnado.Infrastructure">
+    <ContentPage.Content>
+        <StackLayout>
+            <hlistview:HorizontalListView
+                Grid.Row="3"
+                Margin="2,0"
+                ItemHeight="144"
+                ItemWidth="144"
+                ColumnCount="3"
+                ItemsSource="{Binding users}"
+                SnapStyle="Center">
+                <hlistview:HorizontalListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            
+                            <Image Source="{Binding ImagUrl}"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </hlistview:HorizontalListView.ItemTemplate>
+                
+            </hlistview:HorizontalListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

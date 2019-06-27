@@ -8,7 +8,7 @@ using Xamarin.UITest.Queries;
 namespace GrayDog.UITest
 {
     [TestFixture(Platform.Android)]
-    [TestFixture(Platform.iOS)]
+    //[TestFixture(Platform.iOS)]
     public class Tests
     {
         IApp app;
@@ -33,5 +33,12 @@ namespace GrayDog.UITest
 
             Assert.IsTrue(results.Any());
         }
+
+        [Test]
+        public void FirstUnitTest()
+        {
+            app.Repl();
+        }
+
     }
 }

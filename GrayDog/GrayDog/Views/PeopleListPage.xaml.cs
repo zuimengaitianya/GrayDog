@@ -16,7 +16,7 @@ namespace GrayDog.Views
         public PeopleListPage()
         {
             InitializeComponent();
-            BindingContext = new PeopleListViewModel();
+            //BindingContext = new PeopleListViewModel();
         }
     }
 }

@@ -14,6 +14,18 @@ namespace GrayDog.CustomRenderers
           declaringType: typeof(HybridWebView),
           defaultValue: default(string));
 
+        public static readonly BindableProperty HttpSourceProperty = BindableProperty.Create(
+            propertyName: "HttpScource",
+            returnType: typeof(string),
+            declaringType: typeof(HybridWebView),
+            defaultValue: default(string));
+
+        public string HttpScource
+        {
+            get { return (string)GetValue(HttpSourceProperty); }
+            set { SetValue(HttpSourceProperty, value); }
+        }
+
         public string Uri
         {
             get { return (string)GetValue(UriProperty); }

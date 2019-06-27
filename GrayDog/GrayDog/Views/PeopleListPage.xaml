@@ -1,24 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GrayDog.Views.PeopleListPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <ListView IsPullToRefreshEnabled="True" RefreshControlColor="Red"
-                      ItemsSource="{Binding users}"
-                      >
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Frame>
+             x:Class="GrayDog.Views.PeopleListPage"
+             xmlns:vm="clr-namespace:GrayDog.ViewModels"
+             >
+    <ContentPage.BindingContext>
+        <vm:PeopleListViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <ListView x:Name="ItemsListView"
+            ItemsSource="{Binding users}"
+                  VerticalOptions="FillAndExpand"
+                  HasUnevenRows="True"
+                  
+                  IsPullToRefreshEnabled="True" 
+                  CachingStrategy="RecycleElement">
+            
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame BackgroundColor="black"
+                               HasShadow="False"
+                               IsClippedToBounds="True"
+                               CornerRadius="10">
                             <StackLayout>
-                                <Image Source="{Binding Image}"/>
+                                <Image Source="{Binding ImagUrl}"/>
                                 <Label Text="{Binding Name}"/>
                                 <Label Text="{Binding Age}"/>
                             </StackLayout>
                         </Frame>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
-    </ContentPage.Content>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>

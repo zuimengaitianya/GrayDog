@@ -19,10 +19,13 @@ namespace GrayDog
             InitializeComponent();
 
 
-            MainPage = new MainPage();
+            //MainPage = new MainPage();
             //MainPage = new MainButtonPage();
             //MainPage = new TakePhotePage();
             //MainPage = new PeopleListPage();
+            //MainPage = new CardsViewPage();
+            //MainPage = new HorizontalListViewPage();
+            MainPage = new HybridWebViewPage();
         }
 
         public static Database Database

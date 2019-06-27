@@ -10,7 +10,11 @@ namespace GrayDog.UITest
         {
             if (platform == Platform.Android)
             {
-                return ConfigureApp.Android.StartApp();
+                return ConfigureApp.
+                    Android.
+                    ApkFile(@"E:\TestProjects\GrayDog\GrayDog\GrayDog.Android\bin\Debug\com.companyname.GrayDog.apk").
+                    DeviceSerial("R3E6T16921000463").
+                    StartApp();
             }
 
             return ConfigureApp.iOS.StartApp();
