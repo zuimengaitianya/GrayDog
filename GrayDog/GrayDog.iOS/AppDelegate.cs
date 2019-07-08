@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using nexus.protocols.ble;
 using UIKit;
 
 namespace GrayDog.iOS
@@ -24,8 +25,12 @@ namespace GrayDog.iOS
         {
             Rg.Plugins.Popup.Popup.Init();
 
+            IBluetoothLowEnergyAdapter bleAdapter = null;
+            
+            bleAdapter = BluetoothLowEnergyAdapter.ObtainDefaultAdapter();
+
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+            LoadApplication(new App(bleAdapter));
 
             return base.FinishedLaunching(app, options);
         }

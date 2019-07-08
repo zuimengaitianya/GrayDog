@@ -11,6 +11,8 @@ using Plugin.CurrentActivity;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using nexus.protocols.ble;
+using Android.Content;
 
 namespace GrayDog.Droid
 {
@@ -34,9 +36,15 @@ namespace GrayDog.Droid
             //初始化takephoto
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
 
+            //初始化蓝牙
+            //BluetoothLowEnergyAdapter.InitActivity( this );
+            IBluetoothLowEnergyAdapter bleAdapter = null;
+            BluetoothLowEnergyAdapter.Init(this);
+            bleAdapter = BluetoothLowEnergyAdapter.ObtainDefaultAdapter(ApplicationContext);
+
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            LoadApplication(new App());
+            LoadApplication(new App(bleAdapter));
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
@@ -44,6 +52,12 @@ namespace GrayDog.Droid
             Plugin.Permissions.PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             //base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            BluetoothLowEnergyAdapter.OnActivityResult(requestCode, resultCode, data);
+            //base.OnActivityResult(requestCode, resultCode, data);
         }
     }
 }

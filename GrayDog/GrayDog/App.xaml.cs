@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using GrayDog.Views;
 using System.IO;
+using nexus.protocols.ble;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace GrayDog
@@ -13,19 +14,32 @@ namespace GrayDog
         public static double ScreenHeight;
 
         static Database database;
+        public static IBluetoothLowEnergyAdapter Adapter { get; set; }
 
-        public App()
+        public App(IBluetoothLowEnergyAdapter iAdapter)
         {
             InitializeComponent();
 
-
+            Adapter = iAdapter;
             //MainPage = new MainPage();
             //MainPage = new MainButtonPage();
             //MainPage = new TakePhotePage();
             //MainPage = new PeopleListPage();
             //MainPage = new CardsViewPage();
             //MainPage = new HorizontalListViewPage();
-            MainPage = new HybridWebViewPage();
+            //MainPage = new HybridWebViewPage();
+            //MainPage = new BlePage();
+            //NavigationPage navigationPage = new NavigationPage(new PeopleListPage())
+            //{
+            //    //HasNavigationBar
+            //    Title = "Tools",
+            //    BarTextColor = Color.Black,
+            //    BackgroundColor = Color.White,
+            //    BarBackgroundColor=Color.Red
+            //};
+
+            //MainPage = navigationPage;
+            MainPage = new SwitchThemPage();
         }
 
         public static Database Database

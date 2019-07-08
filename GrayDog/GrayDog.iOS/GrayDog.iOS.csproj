@@ -71,6 +71,7 @@
     <Compile Include="CustomRenderers\HybridWebViewRenderer.cs" />
     <Compile Include="CustomRenderers\MyEntryRenderer.cs" />
     <Compile Include="DependencyServices\IOSBaseUrl.cs" />
+    <Compile Include="DependencyServices\IOSSwitchThem.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />
@@ -140,6 +141,9 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="ble.net-ios">
+      <Version>1.2.1</Version>
+    </PackageReference>
     <PackageReference Include="CardsView">
       <Version>2.1.5</Version>
     </PackageReference>

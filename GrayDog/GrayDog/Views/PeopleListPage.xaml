@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GrayDog.Views.PeopleListPage"
              xmlns:vm="clr-namespace:GrayDog.ViewModels"
+             NavigationPage.HasNavigationBar="False"
              >
     <ContentPage.BindingContext>
         <vm:PeopleListViewModel/>
@@ -20,7 +21,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Frame BackgroundColor="black"
+                        <Frame 
                                HasShadow="False"
                                IsClippedToBounds="True"
                                CornerRadius="10">

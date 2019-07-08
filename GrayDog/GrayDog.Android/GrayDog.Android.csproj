@@ -55,6 +55,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="ble.net-android">
+      <Version>1.2.1</Version>
+    </PackageReference>
     <PackageReference Include="CardsView">
       <Version>2.1.5</Version>
     </PackageReference>
@@ -89,6 +92,7 @@
     <Compile Include="CustomRenderers\MyWebViewRenderer.cs" />
     <Compile Include="DependencyServices\DroidBaseUrl.cs" />
     <Compile Include="DependencyServices\DroidCustomAlertDialog.cs" />
+    <Compile Include="DependencyServices\DroidSwitchThem.cs" />
     <Compile Include="JavascriptWebViewClient.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
@@ -176,6 +180,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\Index.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\splash_background.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
