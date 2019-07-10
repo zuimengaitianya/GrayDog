@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <color name="launcher_background">#FFFFFF</color>
+  <color name="launcher_backgroundPW">#000000</color>
+  <color name="launcher_background_dev">#FFFFFF</color>
+  <color name="colorPrimary">#3F51B5</color>
+  <color name="colorPrimaryDark">#303F9F</color>
+  <color name="colorAccent">#FF4081</color>
+  <color name="colorTabIndicator">#80BC00</color>
+  <color name="colorTabSelectedTextColor">#80BC00</color>
+  <color name="colorTabTextColor">#000000</color>
+</resources>

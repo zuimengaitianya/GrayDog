@@ -16,7 +16,8 @@ namespace GrayDog.Views
             {
                 CurrentPage = Children[1];
             });
-
+            //this.SelectedTabColor
+            //TabbedPage
         }
     }
 }

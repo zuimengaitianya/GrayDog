@@ -1,5 +1,4 @@
-﻿using GrayDog.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,13 +10,13 @@ using Xamarin.Forms.Xaml;
 namespace GrayDog.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PeopleListPage : ContentPage
+    public partial class SetTabbedPage : TabbedPage
     {
-        public PeopleListPage()
+        public SetTabbedPage ()
         {
             InitializeComponent();
-            BindingContext = new PeopleListViewModel();
-            
+
+            //ContentPage
         }
     }
 }

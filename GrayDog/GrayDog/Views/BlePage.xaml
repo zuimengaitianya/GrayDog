@@ -4,7 +4,8 @@
              x:Class="GrayDog.Views.BlePage">
     <ContentPage.Content>
         <StackLayout>
-            <Button Text="conn" Clicked="Button_Clicked"/>
+            <Button Text="Scan Broadcaset BLE peripherals" Clicked="Button_Clicked"/>
+            <Button Text="Connect BLE device" Clicked="Button_Clicked_1"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -22,9 +22,20 @@ namespace GrayDog.Views
         {
 
             DependencyService.Get<ISwitchThem>().SetRedTheme();
-
+            NavigationPage navigationPage = (NavigationPage)Application.Current.MainPage;
+            navigationPage.BarBackgroundColor = Color.Red;
+            
+            await Navigation.PushAsync(new PeopleListPage());
             //DependencyService.Get<ISwitchThem>().SwitchDroidThem();
-            await Navigation.PushModalAsync(new NavigationPage(new PeopleListPage()));
+            //await Navigation.PushModalAsync(new NavigationPage(new PeopleListPage())
+            //{
+            //    BackgroundColor = Color.Blue
+            //});
+
+            Button button = new Button() {
+                //Image=
+            };
+            ImageButton imageButton = new ImageButton();
         }
     }
 }

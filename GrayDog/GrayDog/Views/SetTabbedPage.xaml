@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GrayDog.Views.SetTabbedPage"
+            xmlns:local="clr-namespace:GrayDog.Views"
+            BarTextColor="black"
+            SelectedTabColor="red"
+            BackgroundColor="blue"
+            BarBackgroundColor="gray"
+            UnselectedTabColor="green"
+            >
+  <!--Pages can be added as references or inline-->
+  <local:TakePhotePage Title="Tab 1" IconImageSource="settings.png" BackgroundColor="red" />
+  <local:PeopleListPage Title="Tab 2" IconImageSource="gps.png" />
+  <local:AboutPage Title="Tab 3" IconImageSource="info.png"/>
+    <!--<local:TakePhotePage Title="Tab 1"  />
+    <local:PeopleListPage Title="Tab 2"  />
+    <local:AboutPage Title="Tab 3" />-->
+</TabbedPage>

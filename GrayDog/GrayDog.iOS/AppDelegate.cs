@@ -23,6 +23,18 @@ namespace GrayDog.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            var color = UIColor.FromRGB(128, 188, 0);
+            UITabBar.Appearance.SelectedImageTintColor = color; //settings tab selected color
+            UINavigationBar.Appearance.BarTintColor = color; //background of navbar
+            UISwitch.Appearance.TintColor = color;
+            UISwitch.Appearance.OnTintColor = color;
+            UINavigationBar.Appearance.TintColor = UIColor.White; //menu icon color
+                                                                  //UINavigationBar.Appearance.BackgroundColor = UIColor.Purple;
+
+            UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes() { TextColor = UIColor.White }); //TODO: this should be done in xamarin forms
+            //https://forums.xamarin.com/discussion/19277/how-to-change-xamarin-form-navigationpage-title-color
+
+
             Rg.Plugins.Popup.Popup.Init();
 
             IBluetoothLowEnergyAdapter bleAdapter = null;

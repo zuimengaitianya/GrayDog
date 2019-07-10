@@ -1,5 +1,6 @@
 ﻿using nexus.core;
 using nexus.protocols.ble;
+using nexus.protocols.ble.gatt.adopted;
 using nexus.protocols.ble.scan;
 using nexus.protocols.ble.scan.advertisement;
 using System;
@@ -19,6 +20,7 @@ namespace GrayDog.Views
     public partial class BlePage : ContentPage
     {
         IBluetoothLowEnergyAdapter ble;
+        List<IBlePeripheral> blePeripherals;
 
         public BlePage()
         {
@@ -33,9 +35,10 @@ namespace GrayDog.Views
                 await ble.EnableAdapter();
             }
 
-            ble.CurrentState.Subscribe(state => Debug.WriteLine("New State: {0}", state));
+            ble.CurrentState.Subscribe(state => Debug.WriteLine("************New State: {0}", state));
 
             var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+
             await App.Adapter.ScanForBroadcasts(
                // providing ScanSettings is optional
                new ScanSettings()
@@ -83,5 +86,84 @@ namespace GrayDog.Views
 
 
         }
+
+        private async void Button_Clicked_1(object sender, EventArgs e)
+        {
+            var connection = await ble.ConnectToDevice(
+                   // The IBlePeripheral to connect to
+                   blePeripherals[0],
+                   // TimeSpan or CancellationToken to stop the
+                   // connection attempt.
+                   // If you omit this argument, it will use
+                   // BluetoothLowEnergyUtils.DefaultConnectionTimeout
+                   TimeSpan.FromSeconds(15),
+                   // Optional IProgress<ConnectionProgress>
+                   progress => Debug.WriteLine(progress)
+                );
+            /*
+             * Connect to a specific device without manually scanning
+             * In use-cases where you are not scanning for advertisements but rather looking to connect to a specific, known, device:
+             */
+            //var connection = await ble.FindAndConnectToDevice(
+            //   new ScanFilter()
+            //      .SetAdvertisedDeviceName("foo")
+            //      .SetAdvertisedManufacturerCompanyId(0xffff)
+            //      .AddAdvertisedService(guid),
+            //   TimeSpan.FromSeconds(30));
+
+            if (connection.IsSuccessful())
+            {
+                var gattServer = connection.GattServer;
+                // ... do things with gattServer here... (see later examples...)
+
+                /*
+                 * See & Observe server connection Status
+                 */
+                Debug.WriteLine(gattServer.State); // e.g. ConnectionState.Connected
+                                                   // the server implements IObservable<ConnectionState> so you can subscribe to its state
+                gattServer.Subscribe(state =>
+                {
+                    if (state == ConnectionState.Disconnected)
+                    {
+                        Debug.WriteLine("Connection Lost");
+                    }
+                });
+
+                var known = new KnownAttributes();
+
+                foreach (var guid in await gattServer.ListAllServices())
+                {
+                    Debug.WriteLine($"service: {known.GetDescriptionOrGuid(guid)}");
+                }
+
+                //Debug.WriteLine($"service: {serviceGuid}");
+                //foreach (var guid in await gattServer.ListServiceCharacteristics(serviceGuid))
+                //{
+                //    Debug.WriteLine($"characteristic: {known.GetDescriptionOrGuid(guid)}");
+                //}
+
+                //Be sure to disconnect when you are done:
+                await gattServer.Disconnect();
+
+            }
+            else
+            {
+                // Do something to inform user or otherwise handle unsuccessful connection.
+                Debug.WriteLine("Error connecting to device. result={0:g}", connection.ConnectionResult);
+                // e.g., "Error connecting to device. result=ConnectionAttemptCancelled"
+            }
+        }
+
+        public void GATTAGUIDSFun()
+        {
+            var known = new KnownAttributes();
+
+            //// You can add descriptions for any desired
+            //// characteristics, services, and descriptors
+            //known.AddService(myGuid1, "Foo");
+            //known.AddCharacteristic(myGuid2, "Bar");
+            //known.AddDescriptor(myGuid3, "Baz");
+        }
+
     }
 }

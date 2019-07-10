@@ -35,11 +35,18 @@ namespace GrayDog
             //    Title = "Tools",
             //    BarTextColor = Color.Black,
             //    BackgroundColor = Color.White,
-            //    BarBackgroundColor=Color.Red
+            //    BarBackgroundColor = Color.Red
             //};
 
             //MainPage = navigationPage;
-            MainPage = new SwitchThemPage();
+            //NavigationPage navigationPage = new NavigationPage(new SwitchThemPage())
+            //{
+            //    BackgroundColor = Color.Blue,
+            //    BarBackgroundColor=Color.Black,
+            //};
+            //MainPage = navigationPage;
+            //MainPage = new SwitchThemPage();
+            MainPage = new SetTabbedPage();
         }
 
         public static Database Database

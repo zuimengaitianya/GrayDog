@@ -23,6 +23,7 @@ namespace GrayDog.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             Instance = this;
+            //这里设置TabbedPage选中颜色
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
@@ -51,7 +52,7 @@ namespace GrayDog.Droid
         {
             Plugin.Permissions.PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
-            //base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
