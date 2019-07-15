@@ -4,11 +4,26 @@
              x:Class="GrayDog.App">
     <Application.Resources>
         <ResourceDictionary>
+
+            <Thickness x:Key="PageMargin">20</Thickness>
+
+            <!-- Colors -->
+            <Color x:Key="AppBackgroundColor">WhiteSmoke</Color>
+            <Color x:Key="iOSNavigationBarColor">WhiteSmoke</Color>
+            <Color x:Key="AndroidNavigationBarColor">#2196F3</Color>
+            <Color x:Key="iOSNavigationBarTextColor">Black</Color>
+            <Color x:Key="AndroidNavigationBarTextColor">White</Color>
+
             <!--Global Styles-->
             <Color x:Key="NavigationPrimary">#2196F3</Color>
             <Style TargetType="NavigationPage">
-                <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="BarBackgroundColor" Value="{OnPlatform iOS={StaticResource iOSNavigationBarColor},Android={StaticResource NavigationPrimary} }" />
                 <Setter Property="BarTextColor" Value="White" />
+            </Style>
+            <Style TargetType="{x:Type ContentPage}"
+               ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor"
+                    Value="{StaticResource AppBackgroundColor}" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>

@@ -6,8 +6,8 @@
     android:layout_height="wrap_content"
     android:background="?attr/colorPrimary"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    app:tabIndicatorColor="@android:color/white"
-	app:tabSelectedTextColor="#80BC00"
-	app:tabTextColor="#000000"
+    app:tabIndicatorColor="@color/colorTabIndicator" 
+	app:tabSelectedTextColor="@color/colorTabSelectedTextColor"
+	app:tabTextColor="@color/colorTabTextColor"
     app:tabGravity="fill"
     app:tabMode="fixed" />
