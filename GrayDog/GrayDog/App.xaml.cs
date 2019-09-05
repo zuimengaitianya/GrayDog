@@ -24,7 +24,7 @@ namespace GrayDog
             //MainPage = new MainPage();
             //MainPage = new MainButtonPage();
             //MainPage = new TakePhotePage();
-            MainPage = new PeopleListPage();
+            //MainPage = new PeopleListPage();
             //MainPage = new CardsViewPage();
             //MainPage = new HorizontalListViewPage();
             //MainPage = new HybridWebViewPage();
@@ -47,6 +47,7 @@ namespace GrayDog
             //MainPage = navigationPage;
             //MainPage = new SwitchThemPage();
             //MainPage = new SetTabbedPage();
+            MainPage = new GuideCarouselPage();
         }
 
         public static Database Database

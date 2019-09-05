@@ -24,6 +24,10 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Clicked="MenuItem_Clicked" CommandParameter="{Binding .}" Text="More"/>
+                            <MenuItem Clicked="MenuItem_Clicked_1" CommandParameter="{Binding .}" Text="Delete"/>
+                        </ViewCell.ContextActions>
                         <Frame 
                                HasShadow="False"
                                IsClippedToBounds="True"

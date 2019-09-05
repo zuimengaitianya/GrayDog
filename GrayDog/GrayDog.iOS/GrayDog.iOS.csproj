@@ -71,6 +71,27 @@
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <AppExtensionDebugBundleId />
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Greenworks - Release|iPhoneSimulator'">
+    <OutputPath>bin\iPhoneSimulator\Greenworks - Release\</OutputPath>
+    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;CRAMER</DefineConstants>
+    <Optimize>true</Optimize>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+	<IOSInfo>InfoCramer.plist</IOSInfo>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Greenworks - Release|iPhone'">
+    <OutputPath>bin\iPhone\Greenworks - Release\</OutputPath>
+    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;CRAMER</DefineConstants>
+    <Optimize>true</Optimize>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+	<IOSInfo>InfoCramer.plist</IOSInfo>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="CustomRenderers\HybridWebViewRenderer.cs" />
     <Compile Include="CustomRenderers\MyEntryRenderer.cs" />
@@ -79,10 +100,15 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />
-    <None Include="Info.plist">
+    <None Include="Info.plist" Condition=" '$(RunConfiguration)' == 'Default' ">
+      <LogicalName>Info.plist</LogicalName>
       <SubType>Designer</SubType>
     </None>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="InfoCramer.plist" Condition="'$(Configuration)|$(Platform)' == 'Greenworks - Release|iPhone'">
+      <LogicalName>Info.plist</LogicalName>
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
